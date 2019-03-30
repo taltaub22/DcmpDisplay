@@ -21,6 +21,11 @@ function getCurrentEvent () {
 
 function getAllEventMatches (eventKey) {
   return getTBAData(`/event/${eventKey}/matches/simple`)
+    .then(matches=>{
+      return matches.sort((a,b)=>{
+        return a.match_number - b.match_number
+      })
+    })
 }
 
 function getAllEventTeams(eventKey){

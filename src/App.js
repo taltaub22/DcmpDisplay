@@ -3,6 +3,8 @@ import { Divider, Grid, Header, Icon, Segment } from 'semantic-ui-react'
 import './App.css'
 import AppHeader from './components/Header/AppHeader'
 import SelectView from './components/SelectView/SelectView'
+import ChooseTeam from './components/ChooseTeam/ChooseTeam'
+import SelectMatch from './components/SelectMatch/SelectMatch'
 
 class App extends Component {
   render () {
@@ -39,11 +41,11 @@ class App extends Component {
             </Grid.Column>
 
             <Grid.Column>
-
+              <SelectMatch/>
             </Grid.Column>
 
             <Grid.Column>
-
+              <ChooseTeam/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
