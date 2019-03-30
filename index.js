@@ -16,4 +16,8 @@ app.use('/view', viewsCtrl)
 let templatesCtrl = require('./server/controllers/templates.ctrl')
 app.use('/template', templatesCtrl)
 
+let dashboardCtrl = require('./server/controllers/client.ctrl')
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use('/dashboard', dashboardCtrl)
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
