@@ -10,8 +10,8 @@ eventHub.on('matchChange', (match) => {
 module.exports = async function () {
   if (currentMatch != null) {
     let teams = await getMatchTeams(currentMatch)
-    // let redStats = await getTeamsStats(teams.red)
-    // let blueStats = await getTeamsStats(teams.blue)
+    let redStats = await getTeamsStats(teams.red)
+    let blueStats = await getTeamsStats(teams.blue)
 
     return {teams}
   }

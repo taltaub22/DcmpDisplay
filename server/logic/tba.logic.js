@@ -16,7 +16,7 @@ const DCMP_EVENT_CODE = 'iscmp'
 
 function getCurrentEvent () {
   const DCMP = CURRENT_SEASON + DCMP_EVENT_CODE
-  return '2019nvlv'
+  return DCMP
 }
 
 function getAllEventMatches (eventKey) {
