@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const {viewChange} = require('../events.js')
+const {eventHub} = require('../events.js')
 const templateData = require('../templates/template_data.js')
 
 let currentView = 'default.ejs'
-viewChange.on('viewChange', (view) => {
+eventHub.on('currentView', (view) => {
   currentView = view
 })
 

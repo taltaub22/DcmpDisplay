@@ -1,12 +1,11 @@
 const EventEmitter = require('events');
 
-class viewChangeEmitter extends EventEmitter {}
-
-let viewChange = new viewChangeEmitter()
+class eventHubEmitter extends EventEmitter {}
+let eventHub = new eventHubEmitter()
 
 
 module.exports = {
-  viewChange
+  eventHub
 }
 
 

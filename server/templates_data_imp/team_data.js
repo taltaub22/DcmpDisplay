@@ -12,32 +12,23 @@ const instance = axios.create({
 })
 
 const FIRST_ISRAEL_DISTRICT_KEY = 'isr'
-
-const STATUS_PATH = '/status'
-getTBAData(STATUS_PATH)
-  .then(status => {
-
-    const currentSeason = status.current_season
-
-    const DISTRICT_RANKING_PATH = `/district/${currentSeason}${FIRST_ISRAEL_DISTRICT_KEY}/rankings`
-    getTBAData(DISTRICT_RANKING_PATH)
-      .then(rankings => {
-        let stats = []
-        for (let ranking of rankings) {
-          stats.push(createStatsObject(ranking))
-        }
-
-        Promise.all(stats).then(allStats => {
-          allStats.sort((a, b) => a.drank_before_dcmp - b.drank_before_dcmp)
-          writeCSV(allStats, 'testCsv.csv')
-        })
-      })
-
-  })
+const CURRENT_SEASON = 2019
 
 function getTBAData (path) {
   return instance.get(BLUE_ALIIANCE_API + path, BASE_HEADERS)
     .then(data => data.data)
+}
+
+function getTeamStats (teamKey) {
+  const DISTRICT_RANKING_PATH = `/district/${CURRENT_SEASON}${FIRST_ISRAEL_DISTRICT_KEY}/rankings`
+  return getTBAData(DISTRICT_RANKING_PATH)
+    .then(rankings => {
+      return createStatsObject(rankings.filter(ranking => ranking.team_key === teamKey)[0])
+    })
+}
+
+function getTeamsStats (teams) {
+  return Promise.all(teams.map(team => getTeamStats(team)))
 }
 
 function createStatsObject (ranking) {
@@ -179,4 +170,7 @@ function writeCSV (allStats, filename) {
   })
 }
 
-
+module.exports = {
+  getTeamStats,
+  getTeamsStats
+}

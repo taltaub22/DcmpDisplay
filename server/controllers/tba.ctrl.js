@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+const {eventHub} = require('../events.js')
 const {getCurrentEvent, getAllEventMatches, getAllEventTeams} = require('../logic/tba.logic')
+const {getTeamStats} = require('../templates_data_imp/team_data')
 
 router.get('/matches', (req, res) => {
   getAllEventMatches(getCurrentEvent())
@@ -22,6 +24,19 @@ router.get('/teams', (req, res) => {
     .catch(err => {
       res.status = 500
       res.send(err)
+    })
+})
+
+router.post('/teams', (req, res) => {
+  let body = req.body.team
+  eventHub.emit('teamChange', body)
+  getTeamStats(body)
+    .then(stats => {
+      res.send(stats)
+    })
+    .catch(err => {
+      res.status = 500
+      res.send(err.message)
     })
 })
 
