@@ -16,6 +16,9 @@ app.use('/view', viewsCtrl)
 let templatesCtrl = require('./server/controllers/templates.ctrl')
 app.use('/template', templatesCtrl)
 
+let tbaCtrl = require('./server/controllers/tba.ctrl')
+app.use('/tba', tbaCtrl)
+
 let dashboardCtrl = require('./server/controllers/client.ctrl')
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use('/dashboard', dashboardCtrl)
