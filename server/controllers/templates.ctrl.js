@@ -11,15 +11,21 @@ eventHub.on('currentView', (view) => {
 
 router.get('/', (req, res) => {
   console.log(`Getting view: ${currentView}`)
-  if (templateData[currentView.substr(0, currentView.length-4)]) {
-    res.render(currentView, templateData[currentView.substr(0, currentView.length-4)]())
+  if (templateData[currentView.substr(0, currentView.length - 4)]) {
+    templateData[currentView.substr(0, currentView.length - 4)]()
+      .then(data => {
+        res.render(currentView, data)
+      })
+
   } else {
     res.render(currentView)
   }
 })
 
 router.get('/:tempName', (req, res) => {
-  res.render(req.params.tempName, templateData[req.params.tempName]())
+  templateData[req.params.tempName]().then(data => {
+    res.render(req.params.tempName, data)
+  })
 })
 
 module.exports = router
