@@ -16,7 +16,8 @@ const DCMP_EVENT_CODE = 'iscmp'
 
 function getCurrentEvent () {
   const DCMP = CURRENT_SEASON + DCMP_EVENT_CODE
-  return DCMP
+  //return DCMP
+  return '2019mial2'
 }
 
 function getAllEventMatches (eventKey) {
@@ -32,12 +33,16 @@ function getAllEventTeams (eventKey) {
   return getTBAData(`/event/${eventKey}/teams/simple`)
 }
 
-function getMatchTeams (matchKey) {
+function getMatchData (matchKey) {
   return getTBAData(`/match/${matchKey}`)
     .then(match => {
       return {
-        blue: match.alliances.blue.team_keys,
-        red: match.alliances.red.team_keys,
+        match_number: match.match_number,
+        match_level: match.comp_level.toUpperCase(),
+        teams: {
+          blue: match.alliances.blue.team_keys,
+          red: match.alliances.red.team_keys,
+        }
       }
     })
 }
@@ -51,5 +56,5 @@ module.exports = {
   getAllEventMatches,
   getAllEventTeams,
   getCurrentEvent,
-  getMatchTeams
+  getMatchData
 }

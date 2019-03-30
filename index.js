@@ -21,6 +21,7 @@ app.use('/tba', tbaCtrl)
 
 let dashboardCtrl = require('./server/controllers/client.ctrl')
 app.use(express.static(path.join(__dirname, 'dist')))
+app.use('/assets',express.static(path.join(__dirname, 'public/assets')))
 app.use('/dashboard', dashboardCtrl)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

@@ -11,7 +11,7 @@ const instance = axios.create({
   headers: BASE_HEADERS
 })
 
-const FIRST_ISRAEL_DISTRICT_KEY = 'isr'
+const FIRST_ISRAEL_DISTRICT_KEY = 'fim'
 const CURRENT_SEASON = 2019
 
 function getTBAData (path) {
@@ -51,7 +51,7 @@ function createStatsObject (ranking) {
 }
 
 function getEventsName (ranking) {
-  if (ranking.event_points.length > 0) {
+  if (ranking.event_points.length >= 2) {
     return Promise.all([getEventName(ranking.event_points[0].event_key), getEventName(ranking.event_points[1].event_key)])
       .then(([ev1, ev2]) => {
         return [
@@ -72,7 +72,7 @@ function getEventsName (ranking) {
 }
 
 function getEventsAchievement (ranking) {
-  if (ranking.event_points.length > 0) {
+  if (ranking.event_points.length >= 2) {
     return Promise.all([getEventAchievement(ranking.team_key, ranking.event_points[0].event_key),
       getEventAchievement(ranking.team_key, ranking.event_points[1].event_key)])
   } else {

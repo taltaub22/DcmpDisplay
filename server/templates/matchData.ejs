@@ -1,11 +1,237 @@
-<%=teams.red[0] %>
-<br>
-<%=teams.red[1] %>
-<br>
-<%=teams.red[2] %>
-<br>
-<%=teams.blue[0] %>
-<br>
-<%=teams.blue[1] %>
-<br>
-<%=teams.blue[2] %>
+<!--<h1><%=matchData.level%> Match #<%=matchData.number%></h1>-->
+
+<!--<h2>Red Alliance</h2>-->
+
+<!--Team #<%=stats.red[0].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.red[0].drank_before_dcmp %> with <%=stats.red[0].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.red[0].first_d_name %>: &nbsp; <%=stats.red[0].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.red[0].second_d_name %>: &nbsp; <%=stats.red[0].second_d_ach %>-->
+<!--<br>-->
+
+
+<!--Team #<%=stats.red[1].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.red[1].drank_before_dcmp %> with <%=stats.red[1].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.red[1].first_d_name %>: &nbsp; <%=stats.red[1].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.red[1].second_d_name %>: &nbsp; <%=stats.red[1].second_d_ach %>-->
+<!--<br>-->
+
+
+<!--Team #<%=stats.red[2].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.red[2].drank_before_dcmp %> with <%=stats.red[2].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.red[2].first_d_name %>: &nbsp; <%=stats.red[2].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.red[2].second_d_name %>: &nbsp; <%=stats.red[2].second_d_ach %>-->
+<!--<br>-->
+
+<!--<h2>Blue Alliance</h2>-->
+
+<!--Team #<%=stats.blue[0].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.blue[0].drank_before_dcmp %> with <%=stats.blue[0].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.blue[0].first_d_name %>: &nbsp; <%=stats.blue[0].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.blue[0].second_d_name %>: &nbsp; <%=stats.blue[0].second_d_ach %>-->
+<!--<br>-->
+
+
+<!--Team #<%=stats.blue[1].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.blue[1].drank_before_dcmp %> with <%=stats.blue[1].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.blue[1].first_d_name %>: &nbsp; <%=stats.blue[1].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.blue[1].second_d_name %>: &nbsp; <%=stats.blue[1].second_d_ach %>-->
+<!--<br>-->
+
+
+<!--Team #<%=stats.blue[2].team_number %>-->
+<!--<br>-->
+<!--Ranked before DCMP: <%=stats.blue[2].drank_before_dcmp %> with <%=stats.blue[2].dp_before_dcmp %> District Points-->
+<!--<br>-->
+<!--<%=stats.blue[2].first_d_name %>: &nbsp; <%=stats.blue[2].first_d_ach %>-->
+<!--<br>-->
+<!--<%=stats.blue[2].second_d_name %>: &nbsp; <%=stats.blue[2].second_d_ach %>-->
+<!--<br>-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>undefined</title>
+    <meta name="generator" content="Google Web Designer 5.0.4.0226">
+    <style type="text/css" id="gwd-text-style">
+        p {
+            margin: 0px;
+        }
+        h1 {
+            margin: 0px;
+        }
+        h2 {
+            margin: 0px;
+        }
+        h3 {
+            margin: 0px;
+        }
+    </style>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        body {
+            background-color: transparent;
+            transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform-style: preserve-3d;
+        }
+        .gwd-img-11pe {
+            position: absolute;
+            width: 1920px;
+            height: 1081px;
+            left: 0px;
+            top: -1px;
+        }
+        .gwd-div-my09 {
+            position: absolute;
+            width: 373.913px;
+            height: 247.826px;
+            left: 308px;
+            top: 183px;
+            font-family: Tahoma;
+            color: rgb(253, 250, 250);
+        }
+        .gwd-div-utlm {
+            position: absolute;
+            width: 378.261px;
+            height: 247.826px;
+            left: 306px;
+            top: 473px;
+            font-family: Tahoma;
+            color: rgb(248, 244, 244);
+        }
+        .gwd-div-1orj {
+            position: absolute;
+            left: 306px;
+            top: 763px;
+            width: 377px;
+            height: 247px;
+            transform-origin: 188.24px 123.873px 0px;
+            font-family: Tahoma;
+            color: rgb(255, 255, 255);
+        }
+        .gwd-div-nrem {
+            position: absolute;
+            background-image: none;
+            background-color: transparent;
+            font-family: Tahoma;
+            color: rgb(253, 251, 251);
+            text-align: center;
+            font-size: 40px;
+            top: 78px;
+            left: 28px;
+            width: 1366px;
+            height: 67px;
+            transform-origin: 682.77px 33.6914px 0px;
+        }
+        .gwd-div-1isx {
+            position: absolute;
+            width: 376px;
+            height: 246px;
+            transform-origin: 188.027px 123.115px 0px;
+            left: 1005px;
+            top: 179px;
+            font-family: Tahoma;
+            color: rgb(250, 249, 249);
+        }
+        .gwd-div-12r8 {
+            position: absolute;
+            left: 1005px;
+            top: 473px;
+            width: 378px;
+            height: 248px;
+            transform-origin: 188.74px 123.906px 0px;
+            font-family: Tahoma;
+            color: rgb(248, 245, 245);
+        }
+        .gwd-div-wp3h {
+            position: absolute;
+            left: 1007px;
+            top: 762px;
+            width: 377px;
+            height: 250px;
+            transform-origin: 188.615px 125.001px 0px;
+            font-family: Tahoma;
+            color: rgb(250, 248, 248);
+        }
+        .gwd-h1-1dzi {
+            color: rgb(250, 249, 249);
+            font-family: Tahoma;
+            font-size: 30px;
+            text-align: center;
+            left: 0px;
+            top: 1px;
+        }
+    </style>
+</head>
+
+<body class="htmlNoPages">
+<img src="assets/fullscreen-match.png" id="fullscreen-match" class="gwd-img-11pe">
+<div class="gwd-div-nrem">
+    <%=matchData.level%> Match #<%=matchData.number%>
+</div>
+<div class="gwd-div-my09">
+    Team # <%=stats.red[0].team_number %><br>
+    Ranked before DCMP: <%=stats.red[0].drank_before_dcmp %>with <%=stats.red[0].dp_before_dcmp %>District Points<br>
+    <%=stats.red[0].first_d_name %>: &nbsp; <%=stats.red[0].first_d_ach %><br>
+    <%=stats.red[0].second_d_name %>: &nbsp; <%=stats.red[0].second_d_ach %><br>
+
+</div>
+<div class="gwd-div-utlm">
+    Team # <%=stats.red[1].team_number %><br>
+    Ranked before DCMP: <%=stats.red[1].drank_before_dcmp %>with <%=stats.red[1].dp_before_dcmp %>District Points<br>
+    <%=stats.red[1].first_d_name %>: &nbsp; <%=stats.red[1].first_d_ach %><br>
+    <%=stats.red[1].second_d_name %>: &nbsp; <%=stats.red[1].second_d_ach %><br>
+
+</div>
+<div class="gwd-div-1orj">
+    Team # <%=stats.red[2].team_number %><br>
+    Ranked before DCMP: <%=stats.red[2].drank_before_dcmp %>with <%=stats.red[2].dp_before_dcmp %>District Points<br>
+    <%=stats.red[2].first_d_name %>: &nbsp; <%=stats.red[2].first_d_ach %><br>
+    <%=stats.red[2].second_d_name %>: &nbsp; <%=stats.red[2].second_d_ach %><br>
+
+</div>
+<div class="gwd-div-1isx">
+    Team # <%=stats.blue[0].team_number %><br>
+    Ranked before DCMP: <%=stats.blue[0].drank_before_dcmp %>with <%=stats.blue[0].dp_before_dcmp %>District Points<br>
+    <%=stats.blue[0].first_d_name %>: &nbsp; <%=stats.blue[0].first_d_ach %><br>
+    <%=stats.blue[0].second_d_name %>: &nbsp; <%=stats.blue[0].second_d_ach %><br>
+
+</div>
+<div class="gwd-div-12r8">
+    Team # <%=stats.blue[1].team_number %><br>
+    Ranked before DCMP: <%=stats.blue[1].drank_before_dcmp %>with <%=stats.blue[1].dp_before_dcmp %>District Points<br>
+    <%=stats.blue[1].first_d_name %>: &nbsp; <%=stats.blue[1].first_d_ach %><br>
+    <%=stats.blue[1].second_d_name %>: &nbsp; <%=stats.blue[1].second_d_ach %><br>
+
+</div>
+<div class="gwd-div-wp3h">
+    Team # <%=stats.blue[2].team_number %><br>
+    Ranked before DCMP: <%=stats.blue[2].drank_before_dcmp %>with <%=stats.blue[2].dp_before_dcmp %>District Points<br>
+    <%=stats.blue[2].first_d_name %>: &nbsp; <%=stats.blue[2].first_d_ach %><br>
+    <%=stats.blue[2].second_d_name %>: &nbsp; <%=stats.blue[2].second_d_ach %><br>
+
+</div>
+</body>
+
+</html>
