@@ -16,20 +16,30 @@ const DCMP_EVENT_CODE = 'iscmp'
 
 function getCurrentEvent () {
   const DCMP = CURRENT_SEASON + DCMP_EVENT_CODE
-  return DCMP //'2019nvlv'
+  return '2019nvlv'
 }
 
 function getAllEventMatches (eventKey) {
   return getTBAData(`/event/${eventKey}/matches/simple`)
-    .then(matches=>{
-      return matches.sort((a,b)=>{
+    .then(matches => {
+      return matches.sort((a, b) => {
         return a.match_number - b.match_number
       })
     })
 }
 
-function getAllEventTeams(eventKey){
+function getAllEventTeams (eventKey) {
   return getTBAData(`/event/${eventKey}/teams/simple`)
+}
+
+function getMatchTeams (matchKey) {
+  return getTBAData(`/match/${matchKey}`)
+    .then(match => {
+      return {
+        blue: match.alliances.blue.team_keys,
+        red: match.alliances.red.team_keys,
+      }
+    })
 }
 
 function getTBAData (path) {
@@ -40,5 +50,6 @@ function getTBAData (path) {
 module.exports = {
   getAllEventMatches,
   getAllEventTeams,
-  getCurrentEvent
+  getCurrentEvent,
+  getMatchTeams
 }

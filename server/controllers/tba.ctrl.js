@@ -16,6 +16,12 @@ router.get('/matches', (req, res) => {
     })
 })
 
+router.post('/matches', (req, res) => {
+  let body = req.body.match
+  eventHub.emit('matchChange', body)
+  res.sendStatus(200)
+})
+
 router.get('/teams', (req, res) => {
   getAllEventTeams(getCurrentEvent())
     .then(teams => {

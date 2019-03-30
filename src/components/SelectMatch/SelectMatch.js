@@ -12,12 +12,12 @@ export default class SelectMatch extends Component {
 
   getMatches () {
     axios.get('/tba/matches')
-      .then(data=>data.data)
+      .then(data => data.data)
       .then(matches => {
         let mappedMatches = matches.map(match => {
           return {
             key: match.key,
-            text: `${match.comp_level.toUpperCase()} #${match.match_number} - ${match.actual_time != null ?  'Already played' : 'Not Played'}`,
+            text: `${match.comp_level.toUpperCase()} #${match.match_number} - ${match.actual_time != null ? 'Already played' : 'Not Played'}`,
             value: match.key,
             played: match.actual_time != null
           }
@@ -29,16 +29,33 @@ export default class SelectMatch extends Component {
       })
   }
 
+  saveCurrentMatch () {
+    axios.post('/tba/matches', {match: this.state.currentMatch})
+  }
+
+  handleDropChange (e, {value}) {
+    this.setState({currentMatch: value})
+  }
 
   render () {
-    if(!this.state.isLoading && this.state.matches){
+    if (!this.state.isLoading && this.state.matches) {
       return (
-        <Dropdown
-          search
-          placeholder='Please select a match'
-          options={this.state.matches}/>
+        <Form>
+          <Dropdown
+            search
+            placeholder='Please select a match'
+            options={this.state.matches}
+            onChange={this.handleDropChange.bind(this)}/>
+
+          <br/>
+
+          <Button size='mini' icon labelPosition='left' onClick={this.saveCurrentMatch.bind(this)}>
+            Save
+            <Icon name='save'/>
+          </Button>
+        </Form>
       )
-    } else{
+    } else {
       return <div>Loading matches...</div>
     }
 
