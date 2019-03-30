@@ -2,16 +2,17 @@ const express = require('express')
 const router = express.Router()
 
 const {viewChange} = require('../events.js')
-const templateData = require('../templates/template_data')
+const templateData = require('../templates/template_data.js')
 
-let currentView = 'default'
+let currentView = 'default.ejs'
 viewChange.on('viewChange', (view) => {
   currentView = view
 })
 
 router.get('/', (req, res) => {
-  if (templateData[currentView]) {
-    res.render(currentView, templateData[currentView]())
+  console.log(`Getting view: ${currentView}`)
+  if (templateData[currentView.substr(0, currentView.length-4)]) {
+    res.render(currentView, templateData[currentView.substr(0, currentView.length-4)]())
   } else {
     res.render(currentView)
   }
