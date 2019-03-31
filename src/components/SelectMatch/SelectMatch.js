@@ -17,7 +17,7 @@ export default class SelectMatch extends Component {
         let mappedMatches = matches.map(match => {
           return {
             key: match.key,
-            text: `${match.comp_level.toUpperCase()} #${match.match_number} - ${match.actual_time != null ? 'Already played' : 'Not Played'}`,
+            text: `${match.comp_level.toUpperCase()}${match.set_number ? match.set_number : ''} #${match.match_number} - ${match.actual_time != null ? 'Already played' : 'Not Played'}`,
             value: match.key,
             played: match.actual_time != null
           }
