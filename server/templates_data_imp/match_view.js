@@ -45,5 +45,9 @@ function translateLevel(levelCode){
     return 'Qualification'
   }
 
+  if(levelCode ==='F'){
+    return 'Final'
+  }
+
 }
 
