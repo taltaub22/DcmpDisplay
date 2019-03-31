@@ -1,5 +1,4 @@
 const axios = require('axios')
-const event_config = require('../../event_config')
 const BLUE_ALIIANCE_API = 'https://www.thebluealliance.com/api/v3'
 const BASE_HEADERS = {
   'X-TBA-Auth-Key': 'mJu8KOhocThjpk2t0vXMWkEQkBK77nyT15GjaZZwaOsBgLgfJaUrk4TsD3p6XXe9'
@@ -10,10 +9,12 @@ const instance = axios.create({
   headers: BASE_HEADERS
 })
 
-const DISTRICT_KEY = event_config.district_key.toLowerCase()
-const CURRENT_SEASON = event_config.current_season
-
-const EVENT_CODE = event_config.event_key.toLowerCase()
+const PLAYOFF_LEVELS = {
+  f: 1,
+  sf: 2,
+  qf: 3,
+  qm: 4
+}
 
 function getCurrentEvent () {
   const CURRENT_EVENT = require('../../event_config').current_season + require('../../event_config').event_key
@@ -31,9 +32,33 @@ function getCurrentSeason () {
 function getAllEventMatches (eventKey) {
   return getTBAData(`/event/${eventKey}/matches/simple`)
     .then(matches => {
-      return matches.sort((a, b) => {
+      let finals = []
+      let sf = []
+      let qf = []
+      let qm = []
+      for (let match of matches) {
+        if (PLAYOFF_LEVELS[match.comp_level] === 1) {
+          finals.push(match)
+        } else if (PLAYOFF_LEVELS[match.comp_level] === 2) {
+          sf.push(match)
+        } else if (PLAYOFF_LEVELS[match.comp_level] === 3) {
+          qf.push(match)
+        } else {
+          qm.push(match)
+        }
+      }
+
+      let sortByMatch = (a, b) => {
         return a.match_number - b.match_number
-      })
+      }
+
+      qm = qm.sort(sortByMatch)
+      qf = qf.sort(sortByMatch)
+      sf = sf.sort(sortByMatch)
+      finals = finals.sort(sortByMatch)
+
+      return qm.concat(qf.concat(sf.concat(finals)))
+
     })
 }
 
