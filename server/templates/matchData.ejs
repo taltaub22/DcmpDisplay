@@ -1,68 +1,3 @@
-<!--<h1><%=matchData.level%> Match #<%=matchData.number%></h1>-->
-
-<!--<h2>Red Alliance</h2>-->
-
-<!--Team #<%=stats.red[0].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.red[0].drank_before_dcmp %> with <%=stats.red[0].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.red[0].first_d_name %>: &nbsp; <%=stats.red[0].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.red[0].second_d_name %>: &nbsp; <%=stats.red[0].second_d_ach %>-->
-<!--<br>-->
-
-
-<!--Team #<%=stats.red[1].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.red[1].drank_before_dcmp %> with <%=stats.red[1].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.red[1].first_d_name %>: &nbsp; <%=stats.red[1].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.red[1].second_d_name %>: &nbsp; <%=stats.red[1].second_d_ach %>-->
-<!--<br>-->
-
-
-<!--Team #<%=stats.red[2].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.red[2].drank_before_dcmp %> with <%=stats.red[2].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.red[2].first_d_name %>: &nbsp; <%=stats.red[2].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.red[2].second_d_name %>: &nbsp; <%=stats.red[2].second_d_ach %>-->
-<!--<br>-->
-
-<!--<h2>Blue Alliance</h2>-->
-
-<!--Team #<%=stats.blue[0].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.blue[0].drank_before_dcmp %> with <%=stats.blue[0].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.blue[0].first_d_name %>: &nbsp; <%=stats.blue[0].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.blue[0].second_d_name %>: &nbsp; <%=stats.blue[0].second_d_ach %>-->
-<!--<br>-->
-
-
-<!--Team #<%=stats.blue[1].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.blue[1].drank_before_dcmp %> with <%=stats.blue[1].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.blue[1].first_d_name %>: &nbsp; <%=stats.blue[1].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.blue[1].second_d_name %>: &nbsp; <%=stats.blue[1].second_d_ach %>-->
-<!--<br>-->
-
-
-<!--Team #<%=stats.blue[2].team_number %>-->
-<!--<br>-->
-<!--Ranked before DCMP: <%=stats.blue[2].drank_before_dcmp %> with <%=stats.blue[2].dp_before_dcmp %> District Points-->
-<!--<br>-->
-<!--<%=stats.blue[2].first_d_name %>: &nbsp; <%=stats.blue[2].first_d_ach %>-->
-<!--<br>-->
-<!--<%=stats.blue[2].second_d_name %>: &nbsp; <%=stats.blue[2].second_d_ach %>-->
-<!--<br>-->
-
-
 <!DOCTYPE html>
 <html>
 
@@ -182,13 +117,55 @@
             left: 0px;
             top: 1px;
         }
+        .gwd-img-72kg {
+            position: absolute;
+            width: 251px;
+            height: 251px;
+            left: 29px;
+            top: 181px;
+        }
+        .gwd-img-br05 {
+            position: absolute;
+            width: 248px;
+            height: 250px;
+            left: 30px;
+            top: 471px;
+        }
+        .gwd-img-1toy {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 28px;
+            top: 761px;
+        }
+        .gwd-img-j4fr {
+            position: absolute;
+            width: 250px;
+            height: 249px;
+            left: 729px;
+            top: 762px;
+        }
+        .gwd-img-mfgd {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 729px;
+            top: 471px;
+        }
+        .gwd-img-1pch {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 726px;
+            top: 177px;
+        }
     </style>
 </head>
 
 <body class="htmlNoPages">
-<img src="/assets/fullscreen-match.png" id="fullscreen-match" class="gwd-img-11pe">
+<img src="assets/fullscreen-match.png" id="fullscreen-match" class="gwd-img-11pe">
 <div class="gwd-div-nrem">
-    <%=matchData.level%> Match #<%=matchData.number%>
+    <%=matchData.level%>Match # <%=matchData.number%>
 </div>
 <div class="gwd-div-my09">
     Team # <%=stats.red[0].team_number %><br>
@@ -232,6 +209,12 @@
     <%=stats.blue[2].second_d_name %>: &nbsp; <%=stats.blue[2].second_d_ach %><br>
 
 </div>
+<img class="gwd-img-72kg" src="<%=stats.red[0].robot_img_path%>">
+<img class="gwd-img-br05" src="<%=stats.red[1].robot_img_path%>">
+<img class="gwd-img-1toy" src="<%=stats.red[2].robot_img_path%>">
+<img class="gwd-img-j4fr" src="<%=stats.blue[0].robot_img_path%>">
+<img class="gwd-img-mfgd" src="<%=stats.blue[1].robot_img_path%>">
+<img class="gwd-img-1pch" src="<%=stats.blue[2].robot_img_path%>">
 </body>
 
 </html>
