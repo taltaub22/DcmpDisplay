@@ -17,8 +17,7 @@ const PLAYOFF_LEVELS = {
 }
 
 function getCurrentEvent () {
-  const CURRENT_EVENT = require('../../event_config').current_season + require('../../event_config').event_key
-  return CURRENT_EVENT
+  return require('../../event_config').current_season + require('../../event_config').event_key
 }
 
 function getCurrentDistrict () {
@@ -167,18 +166,37 @@ function getEventName (eventKey) {
 
 function createStatsObject (ranking) {
   console.log(`Getting data for team ${ranking.team_key}`)
-  return Promise.all([getEventsName(ranking), getEventsAchievement(ranking)])
-    .then(([events, Achievements]) => {
+  return Promise.all([getEventsName(ranking), getEventsAchievement(ranking),
+                             getTeamStatusInEvent(ranking.team_key, getCurrentEvent()),
+                             getTeamData(ranking.team_key)])
+    .then(([events, achievements, currentStatus, team]) => {
       return {
         drank_before_dcmp: ranking.rank,
         team_number: parseInt(ranking.team_key.substr(3, ranking.team_key.length)),
+        team_nickname: team.nickname,
+        team_location: `${team.city}, ${team.state_prov}, ${team.country}`,
         first_d_name: events[0].name,
-        first_d_ach: Achievements[0],
+        first_d_ach: achievements[0],
         second_d_name: events[1].name,
-        second_d_ach: Achievements[1],
+        second_d_ach: achievements[1],
         dp_before_dcmp: ranking.event_points.length >= 2 ? ranking.event_points[0].total + ranking.event_points[1].total : 0,
+        current_rank: currentStatus.qual.ranking.rank,
+        current_record: currentStatus.qual.ranking.record,
+        current_avg_rd: currentStatus.qual.ranking.sort_orders[0],
+        current_next_match: currentStatus.next_match_key,
+        current_next_match_str: '',
         robot_img_path: '',
       }
+    })
+    .then((stats)=>{
+      if(stats.current_next_match !== null) {
+        return getMatchData(stats.current_next_match)
+          .then(match => {
+            stats.current_next_match_str = `${translateLevel(match.match_level)} Match ${match.match_number}`
+            return stats
+          })
+      }
+      return stats
     })
 }
 
@@ -221,9 +239,33 @@ function getEventsName (ranking) {
   }
 }
 
+function getTeamData(teamKey){
+  return getTBAData(`/team/${teamKey}/simple`)
+}
+
 function getTBAData (path) {
   return instance.get(path, BASE_HEADERS)
     .then(data => data.data)
+}
+
+function translateLevel (levelCode) {
+  levelCode = levelCode.toUpperCase()
+
+  if (levelCode === 'QM') {
+    return 'Qualification'
+  }
+
+  if (levelCode === 'F') {
+    return 'Final'
+  }
+
+  if (levelCode === 'QF') {
+    return 'Quarter Final'
+  }
+
+  if(levelCode === 'SF'){
+    return 'Semi Final'
+  }
 }
 
 module.exports = {
@@ -239,5 +281,7 @@ module.exports = {
   GetTeamPlayoffAchievements,
   getCurrentEvent,
   getCurrentDistrict,
-  getCurrentSeason
+  getCurrentSeason,
+  translateLevel,
+  getTeamData
 }

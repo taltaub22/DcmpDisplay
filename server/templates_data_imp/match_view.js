@@ -1,4 +1,4 @@
-const {getCurrentEvent, getCurrentDistrict, getCurrentSeason, getMatchData, getTeamsDistrictStats} = require('../logic/tba.logic')
+const {getCurrentEvent, getCurrentDistrict, getCurrentSeason, getMatchData, getTeamsDistrictStats, translateLevel} = require('../logic/tba.logic')
 const {getRobotImagePath} = require('../logic/robot_image.logic')
 const {eventHub} = require('../events.js')
 
@@ -58,20 +58,4 @@ module.exports = function () {
   }
 }
 
-function translateLevel (levelCode) {
-  levelCode = levelCode.toUpperCase()
-
-  if (levelCode === 'QM') {
-    return 'Qualification'
-  }
-
-  if (levelCode === 'F') {
-    return 'Final'
-  }
-
-  if (levelCode === 'QF') {
-    return 'Quarter Final'
-  }
-
-}
 
