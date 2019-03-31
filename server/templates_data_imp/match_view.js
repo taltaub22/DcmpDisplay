@@ -1,5 +1,4 @@
-const {getMatchData} = require('../logic/tba.logic')
-const {getTeamsStats} = require('./team_data')
+const {getCurrentEvent, getCurrentDistrict, getCurrentSeason, getMatchData, getTeamsDistrictStats} = require('../logic/tba.logic')
 const {getRobotImagePath} = require('../logic/robot_image.logic')
 const {eventHub} = require('../events.js')
 
@@ -13,7 +12,8 @@ module.exports = function () {
     return getMatchData(currentMatch)
       .then(match => {
         let teams = match.teams
-        return Promise.all([getTeamsStats(teams.red), getTeamsStats(teams.blue)])
+        return Promise.all([getTeamsDistrictStats(getCurrentSeason(), getCurrentDistrict(), teams.red),
+                                   getTeamsDistrictStats(getCurrentSeason(), getCurrentDistrict(), teams.blue)])
           .then(([redStats, blueStats]) => {
 
             let stats = {

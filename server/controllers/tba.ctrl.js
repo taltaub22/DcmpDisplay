@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const {eventHub} = require('../events.js')
-const {getCurrentEvent, getAllEventMatches, getAllEventTeams} = require('../logic/tba.logic')
-const {getTeamStats} = require('../templates_data_imp/team_data')
+const {getCurrentEvent, getAllEventMatches, getAllEventTeams, getTeamStats} = require('../logic/tba.logic')
 
 router.get('/matches', (req, res) => {
   getAllEventMatches(getCurrentEvent())
